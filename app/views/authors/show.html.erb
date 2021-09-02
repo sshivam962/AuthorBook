@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      * {
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Style the header */
+      header {
+          background-color: #666;
+          padding: 20px;
+          text-align: center;
+          font-size: 25px;
+          color: white;
+      }
+
+      article {
+          float: left;
+          padding: 20px;
+          width: 100%;
+          background-color: #f1f1f1;
+          height: 800px;
+      }
+      section::after {
+          content: "";
+          display: table;
+          clear: both;
+      }
+      #authors {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+      }
+
+      #authors td, #authors th {
+          border: 1px solid #ddd;
+          padding: 8px;
+      }
+
+      #authors tr:nth-child(even){background-color: #f2f2f2;}
+
+      #authors tr:hover {background-color: #ddd;}
+
+      #authors th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #052290;
+          color: white;
+      }
+
+      /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+      @media (max-width: 600px) {
+          nav, article {
+              width: 100%;
+              height: auto;
+          }
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h2><%= @author.first_name %></h2>
+</header>
+
+<section>
+  <article>
+    <table id="authors">
+      <tr>
+        <th>Book Id</th>
+        <th>Book Name</th>
+      </tr>
+      <% @author.books.each do |book| %>
+        <tr>
+          <th><%= book.id %></th>
+          <th><%= book.book_title %></th>
+        </tr>
+      <% end %>
+    </table>
+  </article>
+</section>
+</body>
+</html>

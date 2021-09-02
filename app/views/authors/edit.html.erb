@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      * {
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Style the header */
+      header {
+          background-color: #666;
+          padding: 20px;
+          text-align: center;
+          font-size: 25px;
+          color: white;
+      }
+
+      nav {
+          float: left;
+          width: 20%;
+          height: 800px;
+          background: #ccc;
+          padding: 20px;
+      }
+
+      nav ul {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      article {
+          float: left;
+          padding: 20px;
+          width: 80%;
+          background-color: #f1f1f1;
+          height: 800px;
+      }
+
+      section::after {
+          content: "";
+          display: table;
+          clear: both;
+      }
+
+      /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+      @media (max-width: 600px) {
+          nav, article {
+              width: 100%;
+              height: auto;
+          }
+      }
+  </style>
+</head>
+<body>
+<header>
+  <h2>Author</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="<%= authors_path %>">List All Author</a></li>
+      <li><a href="<%= new_author_path %>">Add New Author</a></li>
+      <li><a href="<%= books_path %>">Books</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <h1>New Author</h1>
+
+    <%= form_for(:author, :url => {:action => 'update'}, :method => 'put' ) do |form| %>
+      <div>
+        <%= form.label :first_name %><br>
+        <%= form.text_field :first_name %>
+      </div>
+
+      <div>
+        <%= form.label :last_name %><br>
+        <%= form.text_field :last_name %>
+      </div>
+
+      <div>
+        <%= form.label :dob %><br>
+        <%= form.text_field :dob %>
+      </div>
+
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </article>
+</section>
+</body>
+</html>
