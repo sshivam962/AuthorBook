@@ -104,7 +104,11 @@
         <%= form.label :book_title %><br>
         <%= form.text_field :book_title %>
       </div>
-
+      <select class="selectpicker" multiple data-live-search="true">
+        <% @authors.each do | author| %>
+          <option value="<%= author.id %>"><%= author.first_name %></option>
+        <% end %>
+      </select>
       <div>
         <%= form.submit %>
       </div>
