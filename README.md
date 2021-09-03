@@ -6,11 +6,21 @@
 
 * Database => SQLite
 
+Clone the project:
+```shell
+git clone https://github.com/sshivam962/AuthorBook.git
+```
+
 Install missing gems:
 
 ```shell
 bundle install
 ```
+Run Server:
+```shell
+rails s
+```
+
 Note: If Bootstrap or Css does not work properly-
 
 ```shell
